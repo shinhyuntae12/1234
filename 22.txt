@@ -1,0 +1,15 @@
+new_data = pd.DataFrame({
+    'Temperature': temperature_new,
+    'Humidity': humidity_new,
+    'Soil_Moisture': soil_moisture_new,
+    'Irrigation_Hours': irrigation_hours_new,
+    'Fertilizer_Usage': fertilizer_usage_new,
+    'Equipment_Runtime': equipment_runtime_new
+})
+
+new_data_scaled = scaler.transform(new_data)
+new_predictions = model.predict(new_data_scaled)
+
+print("\nPredicted power usage for new inputs:")
+for i, prediction in enumerate(new_predictions, start=1):
+    print(f"Scenario {i}: {prediction:.2f} kWh")
