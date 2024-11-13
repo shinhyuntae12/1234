@@ -1,0 +1,12 @@
+# 메인 함수
+def main(file_path):
+    data = load_data(file_path)
+    processed_data = preprocess_data(data)
+    X_test, y_test, predictions, anomaly_scores = train_and_predict(processed_data)
+    evaluate_and_identify_anomalies(X_test, y_test, predictions, anomaly_scores, processed_data)
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Sensor Data Anomaly Detection')
+    parser.add_argument('file_path', type=str, help='Path to the sensor data CSV file')
+    args = parser.parse_args()
+    main(args.file_path)
